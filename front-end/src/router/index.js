@@ -23,8 +23,8 @@ const routes = [
 */
 const routes = [
   {
-    path: '/',
-    name: 'login',
+    path: '/login',
+    name: 'LoginPage',
     component: LoginPage
   }
 ]
