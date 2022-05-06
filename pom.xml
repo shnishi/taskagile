@@ -58,6 +58,17 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -159,39 +170,39 @@
             
             <!-- Borrar directorio de resources templates -->
             <plugin>
-    <artifactId>maven-clean-plugin</artifactId>
-    <version>3.2.0</version>
-    <configuration>
-      <filesets>
-        <fileset>
-          <directory>${basedir}/src/main/resources/templates</directory>
-          <includes>
-            <include>**/*</include>
-          </includes>
-          <!--
-          <excludes>
-            <exclude>**/important.log</exclude>
-            <exclude>**/another-important.log</exclude>
-          </excludes>
-          -->
-          <followSymlinks>false</followSymlinks>
-        </fileset>
-        <fileset>
-          <directory>${basedir}/front-end/dist</directory>
-          <includes>
-            <include>**/*</include>
-          </includes>
-          <!--
-          <excludes>
-            <exclude>**/important.log</exclude>
-            <exclude>**/another-important.log</exclude>
-          </excludes>
-          -->
-          <followSymlinks>false</followSymlinks>
-        </fileset>
-      </filesets>
-    </configuration>
-  </plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${basedir}/src/main/resources/templates</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <!--
+                            <excludes>
+                              <exclude>**/important.log</exclude>
+                              <exclude>**/another-important.log</exclude>
+                            </excludes>
+                            -->
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>${basedir}/front-end/dist</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <!--
+                            <excludes>
+                              <exclude>**/important.log</exclude>
+                              <exclude>**/another-important.log</exclude>
+                            </excludes>
+                            -->
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
             
         </plugins>
     </build>
