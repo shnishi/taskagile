@@ -42,10 +42,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
@@ -156,12 +152,13 @@
                 <configuration>
                     <workingDirectory>${basedir}/front-end</workingDirectory>
                 </configuration>
-            </plugin>         
+            </plugin>
+            
+            <!-- Copiar los archivos generados por Vue -->         
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.1.0</version>
                 <executions>
-      
                     <execution>
                         <id>copy front-end template</id>
                         <goals>
@@ -180,6 +177,60 @@
                             </resources>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>copy front-end assets</id>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <outputDirectory>${basedir}/src/main/resources/static</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>front-end/dist</directory>
+                                    <excludes>
+                                        <exclude>index.html</exclude>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy front-end template to target</id>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes/templates</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>front-end/dist</directory>
+                                    <includes>
+                                        <include>index.html</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy front-end assets to target</id>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes/static</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>front-end/dist</directory>
+                                    <excludes>
+                                        <exclude>index.html</exclude>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             
@@ -190,16 +241,14 @@
                 <configuration>
                     <filesets>
                         <fileset>
+                            <directory>${basedir}/src/main/resources/static/static</directory>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
                             <directory>${basedir}/src/main/resources/templates</directory>
                             <includes>
-                                <include>**/*</include>
+                                <include>index.html</include>
                             </includes>
-                            <!--
-                            <excludes>
-                              <exclude>**/important.log</exclude>
-                              <exclude>**/another-important.log</exclude>
-                            </excludes>
-                            -->
                             <followSymlinks>false</followSymlinks>
                         </fileset>
                         <fileset>

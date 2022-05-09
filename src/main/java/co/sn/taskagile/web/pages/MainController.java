@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
  *
  * @author shigeo
  */
-
 @Controller
 public class MainController {
-    
-    @GetMapping(value={"/","/login"})
-    public String entry(){
+
+    @GetMapping(value = {"/", "/login", "/register"})
+    public String entry() {
         return "index";
     }
+
 }
