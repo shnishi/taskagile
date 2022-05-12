@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>TaskAgile</h1>
+        <h1>TaskAgile Login</h1>
     </div>
 </template>
 

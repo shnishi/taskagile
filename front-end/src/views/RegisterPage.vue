@@ -1,4 +1,3 @@
-
 <template>
   <div class="container public">
     <div class="row justify-content-center">
@@ -43,7 +42,6 @@
     <PageFooter/>
   </div>
 </template>
-
 <script>
 import { required, email, minLength, maxLength, alphaNum } from 'vuelidate/lib/validators'
 import registrationService from '@/services/registration'
