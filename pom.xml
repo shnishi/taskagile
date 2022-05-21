@@ -23,6 +23,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
         <dependency>
@@ -32,10 +36,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -94,7 +94,7 @@
                 <version>3.0.0</version>
                 <executions>
                     <execution>
-                        <id>font-end install</id>
+                        <id>front-end install</id>
                         <goals>
                             <goal>exec</goal>
                         </goals>
@@ -107,7 +107,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>font-end unit test</id>
+                        <id>front-end unit test</id>
                         <goals>
                             <goal>exec</goal>
                         </goals>
@@ -241,7 +241,7 @@
                 <configuration>
                     <filesets>
                         <fileset>
-                            <directory>${basedir}/src/main/resources/static/static</directory>
+                            <directory>${basedir}/src/main/resources/static</directory>
                             <followSymlinks>false</followSymlinks>
                         </fileset>
                         <fileset>

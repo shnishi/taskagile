@@ -10,12 +10,6 @@ export default {
 }
 </script>
 
-<script>
-export default {
-  name: 'App'
-}
-</script>
-
 <style lang="scss">
 html {
   font-size: 14px;
