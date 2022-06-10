@@ -4,7 +4,6 @@
  */
 package co.sn.taskagile.web.apis;
 
-
 import co.sn.taskagile.domain.application.UserService;
 import co.sn.taskagile.domain.model.user.EmailAddressExistsException;
 import co.sn.taskagile.domain.model.user.RegistrationException;
@@ -16,31 +15,35 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import javax.validation.Valid;
 
 @Controller
 public class RegistrationApiController {
 
-  private UserService service;
+    private static final Logger log = LoggerFactory.getLogger(RegistrationApiController.class);
+    private UserService service;
 
-  public RegistrationApiController(UserService service) {
-    this.service = service;
-  }
-
-  @PostMapping("/api/registrations")
-  public ResponseEntity<ApiResult> register(@Valid @RequestBody RegistrationPayload payload) {
-    try {
-      service.register(payload.toCommand());
-      return Result.created();
-    } catch (RegistrationException e) {
-      String errorMessage = "Registration failed";
-      if (e instanceof UsernameExistsException) {
-        errorMessage = "Username already exists";
-      } else if (e instanceof EmailAddressExistsException) {
-        errorMessage = "Email address already exists";
-      }
-      return Result.failure(errorMessage);
+    public RegistrationApiController(UserService service) {
+        this.service = service;
     }
-  }
+
+    @PostMapping("/api/registrations")
+    public ResponseEntity<ApiResult> register(@Valid @RequestBody RegistrationPayload payload) {
+        try {
+            log.debug("SNI Processing register");
+            service.register(payload.toCommand());
+            return Result.created();
+        } catch (RegistrationException e) {
+            String errorMessage = "Registration failed";
+            if (e instanceof UsernameExistsException) {
+                errorMessage = "Username already exists";
+            } else if (e instanceof EmailAddressExistsException) {
+                errorMessage = "Email address already exists";
+            }
+            log.debug("SNI Error register "+errorMessage);
+            return Result.failure(errorMessage);
+        }
+    }
 }

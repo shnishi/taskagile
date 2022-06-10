@@ -16,4 +16,5 @@ module.exports = defineConfig({
         'bootstrap/dist/css/bootstrap.min.css'
       ]
     }
-  }})
+  }
+})
