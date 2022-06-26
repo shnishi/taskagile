@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user", schema="taskadmin")
 public class User extends AbstractBaseEntity {
 
     private static final long serialVersionUID = -538781580460070724L;

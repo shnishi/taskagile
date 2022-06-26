@@ -18,6 +18,7 @@ import co.sn.taskagile.web.apis.authenticate.SimpleLogoutSuccessHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  *
@@ -36,12 +37,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(PUBLIC).permitAll()
                 .anyRequest().authenticated()
                 .and()
+                .addFilterAt(authenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .formLogin()
                 .loginPage("/login")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logged-out")
+                .logoutSuccessHandler(logoutSuccessHandler())
                 .and()
                 .csrf().disable();
     }
