@@ -1,4 +1,4 @@
-/* 
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/javascript.js to edit this template
  */
@@ -11,7 +11,7 @@ export default {
    */
   getMyData () {
     return new Promise((resolve, reject) => {
-      axios.get('/me').then(({data}) => {
+      axios.get('/me').then(({ data }) => {
         resolve(data)
       }).catch((error) => {
         reject(errorParser.parse(error))

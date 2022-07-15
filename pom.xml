@@ -134,6 +134,7 @@
                             </arguments>
                         </configuration>
                     </execution>
+                    <!-- snishi inactivar
                     <execution>
                         <id>front-end e2e test</id>
                         <goals>
@@ -148,6 +149,7 @@
                             </arguments>
                         </configuration>
                     </execution>
+                    -->
                 </executions>
                 <configuration>
                     <workingDirectory>${basedir}/front-end</workingDirectory>

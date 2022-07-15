@@ -1,7 +1,10 @@
 <template>
   <div class="container public">
     <div class="row justify-content-center">
-      <h1>TaskAgile Login</h1>
+      <h1>
+        TaskAgile Login
+        <small class="text-muted">Ejemplo de Vue.js</small>
+      </h1>
       <div class="form">
         <MainLogo/>
         <form @submit.prevent="submitForm">
@@ -79,10 +82,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.links {
-  margin: 30px 0 50px 0;
-  text-align: center;
-}
-</style>

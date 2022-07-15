@@ -1,47 +1,36 @@
 <template>
-  <div class="page-header d-flex align-content-center">
-    <div class="logo" @click="goHome()">
-      <font-awesome-icon icon="home" class="home-icon" />
-      <img src="/images/logo.png">
-    </div>
-    <div class="boards-menu-toggle">
-      <div class="dropdown">
-        <button class="btn dropdown-toggle" type="button" id="boardsMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ $t('header.boardsMenu.label') }}
-        </button>
-        <div class="dropdown-menu" aria-labelledby="boardsMenu">
-          <div v-show="!hasBoards" class="dropdown-item">{{ $t('header.boardsMenu.noBoard') }}</div>
-          <div v-show="hasBoards">
-            <h6 class="dropdown-header" v-show="personalBoards.length">{{ $t('header.boardsMenu.personalBoards') }}</h6>
-            <button v-for="board in personalBoards" v-bind:key="board.id" @click="openBoard(board)"
-                    class="dropdown-item" type="button">{{ board.name }}</button>
-            <div v-for="team in teamBoards" v-bind:key="'t' + team.id">
-              <h6 class="dropdown-header">{{ team.name }}</h6>
-              <button v-for="board in team.boards" v-bind:key="board.id" @click="openBoard(board)"
-                      class="dropdown-item" type="button">{{ board.name }}</button>
-            </div>
-          </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Task Agile</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="boardsMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
         </div>
-      </div>
-    </div>
-    <div class="search-box flex-fill">
-      <div class="search-wrapper">
-        <font-awesome-icon icon="search" class="search-icon" />
-        <input type="text" v-bind:placeholder="$t('header.search')" class="form-control form-control-sm" />
-      </div>
-    </div>
-    <div class="profile-menu-toggle">
-      <div class="dropdown">
-        <button class="btn dropdown-toggle" type="button" id="profileMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ user.name }}
-        </button>
-        <div class="dropdown-menu" aria-labelledby="profileMenu">
-          <button class="dropdown-item" type="button">{{ $t('header.profile') }}</button>
-          <button class="dropdown-item" type="button">{{ $t('header.signOut') }}</button>
-        </div>
-      </div>
-    </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
+</nav>
 </template>
 
 <script>
@@ -59,7 +48,7 @@ export default {
     ])
   },
   created () {
-    this.$store.dispatch('getMyData')
+    this.$store.dispatch('getMyDatax')
   },
   methods: {
     goHome () {
@@ -71,67 +60,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.page-header {
-  padding: 9px 10px 8px;
-  border-bottom: 1px solid #eee;
-
-  .logo {
-    color: #444;
-    height: 25px;
-    width: 115px;
-    margin-top: 2px;
-    cursor: pointer;
-
-    .home-icon {
-      font-size: 20px;
-      vertical-align: middle;
-    }
-
-    img {
-      margin-left: 5px;
-      margin-top: 6px;
-      width: 80px;
-      // vertical-align: bottom;
-    }
-  }
-
-  .boards-menu-toggle {
-    padding-left: 20px;
-    width: 100px;
-  }
-
-  .profile-menu-toggle {
-    width: 215px;
-    text-align: right;
-  }
-
-  .search-box {
-    .search-wrapper {
-      width: 300px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .search-icon {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      color: #666;
-    }
-
-    input {
-      padding-left: 30px;
-      height: calc(1.8125rem + 5px);
-      font-size: 1rem;
-      border: 1px solid #eee;
-      border-radius: 5px;
-    }
-  }
-}
-
-.dropdown-toggle {
-  padding: 2px 5px !important;
-}
-</style>

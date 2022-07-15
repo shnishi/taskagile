@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/javascript.js to edit this template
  */
-
 export default {
   updateMyData (state, data) {
     state.user.name = data.user.name
@@ -16,4 +15,3 @@ export default {
     state.boards.push(board)
   }
 }
-

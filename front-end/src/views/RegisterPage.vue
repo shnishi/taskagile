@@ -104,7 +104,7 @@ export default {
       this.$v.$touch()
       if (this.$v.$invalid) {
         console.log('SNI Error inválido 1')
-        console.log('SNI this.$v.$invalid ' + this.$v.$invalid)
+        consolcd ..e.log('SNI this.$v.$invalid ' + this.$v.$invalid)
         console.log('SNI Error inválido 2')
         return
       }
